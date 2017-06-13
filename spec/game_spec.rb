@@ -9,16 +9,14 @@ describe Game do
   describe '#choose_starting_square' do
     it 'updates selected square with given co-ordinates' do
       game.choose_starting_square(3, 1)
-      expect(game.grid).to eq (
-        [
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 1, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-        ]
-      )
+      expect(game.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
     end
   end
 end

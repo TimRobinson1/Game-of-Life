@@ -1,3 +1,4 @@
+# Game logic
 class Game
   attr_reader :grid
 
@@ -8,7 +9,7 @@ class Game
       [0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0]
     ]
   end
 
