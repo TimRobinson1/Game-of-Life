@@ -18,5 +18,44 @@ describe Game do
         [0, 0, 0, 0, 0, 0]
       ]
     end
+
+    it 'can have multiple starting co-ordinates' do
+      game.choose_starting_square(3, 1)
+      game.choose_starting_square(5, 3)
+      expect(game.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0]
+      ]
+    end
+  end
+
+  describe '#find_neighbour' do
+    it 'returns the specified cell content' do
+      game.choose_starting_square(1, 3)
+      expect(game.find_neighbour(1, 3)).to eq 1
+    end
+  end
+
+  describe '#update_cell' do
+    it 'will determine living/dead status'
+  end
+
+  describe '#start' do
+    # it 'destroys a lone square' do
+    #   game.choose_starting_square(3, 3)
+    #   game.start
+    #   expect(game.grid).to eq [
+    #     [0, 0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0, 0]
+    #   ]
+    # end
   end
 end
