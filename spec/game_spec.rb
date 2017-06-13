@@ -33,10 +33,10 @@ describe Game do
     end
   end
 
-  describe '#find_neighbour' do
+  describe '#neighbour' do
     it 'returns the specified cell content' do
       game.choose_starting_square(1, 3)
-      expect(game.find_neighbour(1, 3)).to eq 1
+      expect(game.neighbour(1, 3)).to eq 1
     end
   end
 
@@ -45,17 +45,6 @@ describe Game do
   end
 
   describe '#start' do
-    # it 'destroys a lone square' do
-    #   game.choose_starting_square(3, 3)
-    #   game.start
-    #   expect(game.grid).to eq [
-    #     [0, 0, 0, 0, 0, 0],
-    #     [0, 0, 0, 0, 0, 0],
-    #     [0, 0, 0, 0, 0, 0],
-    #     [0, 0, 0, 0, 0, 0],
-    #     [0, 0, 0, 0, 0, 0],
-    #     [0, 0, 0, 0, 0, 0]
-    #   ]
-    # end
+    it 'destroys a lone square'
   end
 end
