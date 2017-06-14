@@ -1,4 +1,5 @@
 require 'board'
+require_relative './helpers/shape_creation_helper'
 
 describe Board do
   let(:board) { described_class.new(15) }
@@ -33,17 +34,13 @@ describe Board do
       board.choose_coordinates(3, 2)
       board.choose_coordinates(3, 3)
       board.tick
-      # p board.grid
       expect(board.grid[2][2]).to eq 1
     end
   end
 
   describe 'static shapes' do
     it 'block shape remains static' do
-      small_board.choose_coordinates(3, 1)
-      small_board.choose_coordinates(3, 2)
-      small_board.choose_coordinates(4, 1)
-      small_board.choose_coordinates(4, 2)
+      make_block_shape
       small_board.tick
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
@@ -56,12 +53,7 @@ describe Board do
     end
 
     it 'beehive shape remains static' do
-      small_board.choose_coordinates(2, 2)
-      small_board.choose_coordinates(2, 3)
-      small_board.choose_coordinates(3, 1)
-      small_board.choose_coordinates(3, 4)
-      small_board.choose_coordinates(4, 2)
-      small_board.choose_coordinates(4, 3)
+      make_beehive_shape
       small_board.tick
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
@@ -74,13 +66,7 @@ describe Board do
     end
 
     it 'loaf shape remains static' do
-      small_board.choose_coordinates(1, 2)
-      small_board.choose_coordinates(1, 3)
-      small_board.choose_coordinates(2, 1)
-      small_board.choose_coordinates(2, 4)
-      small_board.choose_coordinates(3, 2)
-      small_board.choose_coordinates(3, 4)
-      small_board.choose_coordinates(4, 3)
+      make_loaf_shape
       small_board.tick
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
@@ -93,10 +79,7 @@ describe Board do
     end
 
     it 'tub shape remains static' do
-      small_board.choose_coordinates(1, 2)
-      small_board.choose_coordinates(2, 1)
-      small_board.choose_coordinates(2, 3)
-      small_board.choose_coordinates(3, 2)
+      make_tub_shape
       small_board.tick
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
@@ -109,11 +92,7 @@ describe Board do
     end
 
     it 'boat shape remains static' do
-      small_board.choose_coordinates(1, 2)
-      small_board.choose_coordinates(1, 1)
-      small_board.choose_coordinates(2, 1)
-      small_board.choose_coordinates(2, 3)
-      small_board.choose_coordinates(3, 2)
+      make_boat_shape
       small_board.tick
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
