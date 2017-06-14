@@ -2,6 +2,7 @@ require 'board'
 
 describe Board do
   let(:board) { described_class.new(15) }
+  let(:small_board) { described_class.new(6)}
 
   it { is_expected.to respond_to :grid }
 
@@ -34,6 +35,94 @@ describe Board do
       board.tick
       # p board.grid
       expect(board.grid[2][2]).to eq 1
+    end
+  end
+
+  describe 'static shapes' do
+    it 'block shape remains static' do
+      small_board.choose_coordinates(3, 1)
+      small_board.choose_coordinates(3, 2)
+      small_board.choose_coordinates(4, 1)
+      small_board.choose_coordinates(4, 2)
+      small_board.tick
+      expect(small_board.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 0, 0, 0],
+        [0, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
+    end
+
+    it 'beehive shape remains static' do
+      small_board.choose_coordinates(2, 2)
+      small_board.choose_coordinates(2, 3)
+      small_board.choose_coordinates(3, 1)
+      small_board.choose_coordinates(3, 4)
+      small_board.choose_coordinates(4, 2)
+      small_board.choose_coordinates(4, 3)
+      small_board.tick
+      expect(small_board.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1, 0],
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
+    end
+
+    it 'loaf shape remains static' do
+      small_board.choose_coordinates(1, 2)
+      small_board.choose_coordinates(1, 3)
+      small_board.choose_coordinates(2, 1)
+      small_board.choose_coordinates(2, 4)
+      small_board.choose_coordinates(3, 2)
+      small_board.choose_coordinates(3, 4)
+      small_board.choose_coordinates(4, 3)
+      small_board.tick
+      expect(small_board.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1, 0],
+        [0, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
+    end
+
+    it 'tub shape remains static' do
+      small_board.choose_coordinates(1, 2)
+      small_board.choose_coordinates(2, 1)
+      small_board.choose_coordinates(2, 3)
+      small_board.choose_coordinates(3, 2)
+      small_board.tick
+      expect(small_board.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 1, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
+    end
+
+    it 'boat shape remains static' do
+      small_board.choose_coordinates(1, 2)
+      small_board.choose_coordinates(1, 1)
+      small_board.choose_coordinates(2, 1)
+      small_board.choose_coordinates(2, 3)
+      small_board.choose_coordinates(3, 2)
+      small_board.tick
+      expect(small_board.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 0, 0, 0],
+        [0, 1, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
     end
   end
 end
