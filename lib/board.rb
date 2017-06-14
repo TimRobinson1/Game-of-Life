@@ -17,11 +17,13 @@ class Board
     end
   end
 
+  private
+
   def update_cell(row, cell)
     neighbours = find_all_neighbours(row, cell)
-    if neighbours.count(1).between?(2, 3)
+    if neighbours.count(1) == 3
       create_cell(row, cell)
-    else
+    elsif !neighbours.count(1).between?(2, 3)
       destroy_cell(row, cell)
     end
   end
