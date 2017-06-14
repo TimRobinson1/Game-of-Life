@@ -54,7 +54,7 @@ describe Game do
   describe '#start' do
     it 'destroys a lone square' do
       small_game.choose_starting_square(3, 1)
-      small_game.start
+      small_game.tick
       expect(small_game.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],

@@ -10,7 +10,7 @@ class Board
     @grid[row][column] = 1
   end
 
-  def tick
+  def update
     record_neighbours
     update_grid
   end

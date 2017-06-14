@@ -22,10 +22,10 @@ describe Board do
     end
   end
 
-  describe '#tick' do
+  describe '#update' do
     it 'advances game by one tick and destroys lone cells' do
       board.choose_coordinates(4, 1)
-      board.tick
+      board.update
       expect(board.grid[4][1]).to eq 0
     end
 
@@ -33,7 +33,7 @@ describe Board do
       board.choose_coordinates(3, 1)
       board.choose_coordinates(3, 2)
       board.choose_coordinates(3, 3)
-      board.tick
+      board.update
       expect(board.grid[2][2]).to eq 1
     end
   end
@@ -41,7 +41,7 @@ describe Board do
   describe 'static shapes' do
     it 'block shape remains static' do
       make_block_shape
-      small_board.tick
+      small_board.update
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
@@ -54,7 +54,7 @@ describe Board do
 
     it 'beehive shape remains static' do
       make_beehive_shape
-      small_board.tick
+      small_board.update
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
@@ -67,7 +67,7 @@ describe Board do
 
     it 'loaf shape remains static' do
       make_loaf_shape
-      small_board.tick
+      small_board.update
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 1, 1, 0, 0],
@@ -80,7 +80,7 @@ describe Board do
 
     it 'tub shape remains static' do
       make_tub_shape
-      small_board.tick
+      small_board.update
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0, 0],
@@ -93,7 +93,7 @@ describe Board do
 
     it 'boat shape remains static' do
       make_boat_shape
-      small_board.tick
+      small_board.update
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 1, 1, 0, 0, 0],
@@ -106,11 +106,11 @@ describe Board do
   end
 
   describe 'dynamic shapes' do
-    it 'creates a moving blinker' do
+    it 'creates a moving blinker shape' do
       small_board.choose_coordinates(2, 1)
       small_board.choose_coordinates(2, 2)
       small_board.choose_coordinates(2, 3)
-      small_board.tick
+      small_board.update
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0, 0],
@@ -121,18 +121,29 @@ describe Board do
       ]
     end
 
-    it 'creates a constantly moving blinker' do
+    it 'creates a moving toad shape' do
+      small_board.choose_coordinates(1, 3)
       small_board.choose_coordinates(2, 1)
-      small_board.choose_coordinates(2, 2)
-      small_board.choose_coordinates(2, 3)
-      small_board.tick
-      small_board.tick
+      small_board.choose_coordinates(2, 4)
+      small_board.choose_coordinates(3, 1)
+      small_board.choose_coordinates(3, 4)
+      small_board.choose_coordinates(4, 2)
+      small_board.update
       expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 1, 0],
         [0, 1, 1, 1, 0, 0],
         [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
+      small_board.update
+      expect(small_board.grid).to eq [
         [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0],
+        [0, 1, 0, 0, 1, 0],
+        [0, 1, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0],
         [0, 0, 0, 0, 0, 0]
       ]
     end

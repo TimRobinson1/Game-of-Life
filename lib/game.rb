@@ -16,7 +16,7 @@ class Game
     @board.choose_coordinates(row, column)
   end
 
-  def start
-    @board.tick
+  def tick
+    @board.update
   end
 end
