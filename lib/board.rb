@@ -26,18 +26,17 @@ class Board
   end
 
   def update_grid
-    @grid.each_with_index do |row, row_index|
-      row.each_with_index do |cell, cell_index|
-        update_cell(@neighbours.shift, row_index, cell_index)
+    @grid.map do |row|
+      row.map! do |cell|
+        n = @neighbours.shift
+        if n.count(1) == 3
+          1
+        elsif n.count(1) != 2
+          0
+        else
+          cell
+        end
       end
-    end
-  end
-
-  def update_cell(neighbours, row, cell)
-    if neighbours.count(1) == 3
-      @grid[row][cell] = 1
-    elsif neighbours.count(1) != 2
-      @grid[row][cell] = 0
     end
   end
 
