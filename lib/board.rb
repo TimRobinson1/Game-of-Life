@@ -1,15 +1,13 @@
-require 'cell'
-
 class Board
   attr_reader :grid
 
   def initialize(grid_size = 10)
-    @grid = Array.new(grid_size) { Array.new(grid_size) { Cell.new } }
+    @grid = Array.new(grid_size) { Array.new(grid_size) { 0 } }
     @neighbours = []
   end
 
   def choose_coordinates(row, column)
-    @grid[row][column].activate
+    @grid[row][column] = 1
   end
 
   def update
@@ -22,18 +20,19 @@ class Board
   def record_neighbours
     @grid.each_with_index do |row, row_index|
       row.each_with_index do |cell, cell_index|
-        cell.neighbours = find_all_neighbours(row_index, cell_index)
+        @neighbours << find_all_neighbours(row_index, cell_index)
       end
     end
   end
 
   def update_grid
-    @grid.each do |row|
-      row.each do |cell|
-        if cell.active_neighbours == 3
-          cell.activate
-        elsif cell.active_neighbours != 2
-          cell.deactivate
+    @grid.map do |row|
+      row.map! do |cell|
+        n = @neighbours.shift
+        if n.count(1) == 3
+          1
+        elsif n.count(1) != 2
+          0
         else
           cell
         end
@@ -57,7 +56,7 @@ class Board
   end
 
   def neighbour(row, cell)
-    return Cell.new unless @grid[row] && @grid[row][cell]
+    return 0 unless @grid[row]
     @grid[row][cell]
   end
 

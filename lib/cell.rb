@@ -14,10 +14,6 @@ class Cell
     @active = false
   end
 
-  def active_neighbours
-    @neighbours.count { |cell| cell.active? }
-  end
-
   def active?
     @active
   end
