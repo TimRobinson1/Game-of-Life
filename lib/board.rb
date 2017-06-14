@@ -3,6 +3,7 @@ class Board
 
   def initialize(grid_size = 10)
     @grid = Array.new(grid_size) { Array.new(grid_size) { 0 } }
+    @neighbours = []
   end
 
   def choose_coordinates(row, column)
@@ -10,30 +11,34 @@ class Board
   end
 
   def tick
-    @grid.each_with_index do |row, row_index|
-      row.each_with_index do |cell, cell_index|
-        update_cell(row_index, cell_index)
-      end
-    end
+    record_neighbours
+    update_grid
   end
 
   private
 
-  def update_cell(row, cell)
-    neighbours = find_all_neighbours(row, cell)
-    if neighbours.count(1) == 3
-      create_cell(row, cell)
-    elsif !neighbours.count(1).between?(2, 3)
-      destroy_cell(row, cell)
+  def record_neighbours
+    @grid.each_with_index do |row, row_index|
+      row.each_with_index do |cell, cell_index|
+        @neighbours << find_all_neighbours(row_index, cell_index)
+      end
     end
   end
 
-  def destroy_cell(row, cell)
-    @grid[row][cell] = 0
+  def update_grid
+    @grid.each_with_index do |row, row_index|
+      row.each_with_index do |cell, cell_index|
+        update_cell(@neighbours.shift, row_index, cell_index)
+      end
+    end
   end
 
-  def create_cell(row, cell)
-    @grid[row][cell] = 1
+  def update_cell(neighbours, row, cell)
+    if neighbours.count(1) == 3
+      @grid[row][cell] = 1
+    elsif neighbours.count(1) != 2
+      @grid[row][cell] = 0
+    end
   end
 
   def find_all_neighbours(row, cell)

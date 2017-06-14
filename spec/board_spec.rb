@@ -104,4 +104,37 @@ describe Board do
       ]
     end
   end
+
+  describe 'dynamic shapes' do
+    it 'creates a moving blinker' do
+      small_board.choose_coordinates(2, 1)
+      small_board.choose_coordinates(2, 2)
+      small_board.choose_coordinates(2, 3)
+      small_board.tick
+      expect(small_board.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
+    end
+
+    it 'creates a constantly moving blinker' do
+      small_board.choose_coordinates(2, 1)
+      small_board.choose_coordinates(2, 2)
+      small_board.choose_coordinates(2, 3)
+      small_board.tick
+      small_board.tick
+      expect(small_board.grid).to eq [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+      ]
+    end
+  end
 end
