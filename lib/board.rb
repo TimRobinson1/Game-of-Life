@@ -5,5 +5,8 @@ class Board
     @grid = Array.new(grid_size) { Array.new(grid_size) { 0 } }
   end
 
+  def choose_coordinates(row, column)
+    @grid[row][column] = 1
+  end
 
 end

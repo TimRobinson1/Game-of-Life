@@ -12,4 +12,11 @@ describe Board do
   it 'has a settable grid size' do
     expect(board.grid.length).to eq 15
   end
+
+  describe '#choose_coordinates' do
+    it 'affects the selected cell in the grid' do
+      board.choose_coordinates(4, 1)
+      expect(board.grid[4][1]).to eq 1
+    end
+  end
 end

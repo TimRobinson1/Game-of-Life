@@ -1,24 +1,21 @@
 # Game logic
 class Game
-  attr_reader :grid
+  attr_reader :board
 
-  def initialize
-    @grid = [
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0]
-    ]
+  def initialize(play_area_size = 10)
+    @board = Board.new(play_area_size)
+  end
+
+  def grid
+    @board.grid
   end
 
   def choose_starting_square(row, column)
-    @grid[row][column] = 1
+    @board.choose_coordinates(row, column)
   end
 
   def start
-    @grid.each_with_index do |row, row_index|
+    @board.each_with_index do |row, row_index|
       row.each_with_index do |cell, cell_index|
         update_cell(row_index, cell_index)
       end
@@ -37,11 +34,11 @@ class Game
   end
 
   def destroy_cell(row, cell)
-    @grid[row][cell] = 0
+    @board[row][cell] = 0
   end
 
   def create_cell(row, cell)
-    @grid[row][cell] = 1
+    @board[row][cell] = 1
   end
 
   def find_all_neighbours(row, cell)
@@ -60,7 +57,7 @@ class Game
   end
 
   def neighbour(row, cell)
-    return 0 unless @grid[row]
-    @grid[row][cell]
+    return 0 unless @board[row]
+    @board[row][cell]
   end
 end
