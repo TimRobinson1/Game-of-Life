@@ -262,6 +262,28 @@
         1,
         null
       ],
+      "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/spec/cell_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/lib/cell.rb": [
+        1,
+        1,
+        2,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/spec/game_spec.rb": [
         1,
         null,
@@ -357,6 +379,6 @@
         null
       ]
     },
-    "timestamp": 1497449135
+    "timestamp": 1497449378
   }
 }
