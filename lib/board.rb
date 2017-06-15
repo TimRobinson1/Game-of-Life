@@ -1,5 +1,6 @@
 require_relative 'cell_scanner'
 
+# Responsible for updating grid cells
 class Board
   attr_reader :grid
 

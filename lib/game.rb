@@ -1,6 +1,6 @@
 require_relative 'board'
 
-# Game logic
+# Responsible for game interactions
 class Game
   attr_reader :board
 

@@ -3,7 +3,7 @@ require_relative './helpers/shape_creation_helper'
 
 describe Board do
   let(:board) { described_class.new(15) }
-  let(:small_board) { described_class.new(6)}
+  let(:small_board) { described_class.new(6) }
 
   it { is_expected.to respond_to :grid }
 
