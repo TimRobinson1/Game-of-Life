@@ -156,10 +156,13 @@
       ],
       "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/lib/board.rb": [
         1,
+        null,
+        1,
         1,
         null,
         1,
         11982,
+        20,
         20,
         null,
         null,
@@ -178,14 +181,6 @@
         11,
         84,
         774,
-        null,
-        null,
-        null,
-        null,
-        1,
-        11,
-        84,
-        774,
         774,
         18,
         756,
@@ -197,9 +192,27 @@
         null,
         null,
         null,
+        null
+      ],
+      "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/lib/cell_scanner.rb": [
         1,
         null,
-        774,
+        1,
+        12,
+        12,
+        12,
+        87,
+        783,
+        null,
+        null,
+        12,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        783,
         null,
         null,
         null,
@@ -213,9 +226,8 @@
         null,
         null,
         1,
-        6192,
-        5940,
-        null,
+        6264,
+        6003,
         null,
         null
       ],
@@ -259,6 +271,20 @@
         1,
         1,
         1,
+        null
+      ],
+      "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/spec/cell_scanner_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/spec/cell_spec.rb": [
@@ -404,6 +430,6 @@
         null
       ]
     },
-    "timestamp": 1497465536
+    "timestamp": 1497521746
   }
 }
