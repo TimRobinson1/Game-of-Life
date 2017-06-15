@@ -5,7 +5,6 @@ class Board
 
   def initialize(grid_size = 10)
     @grid = Array.new(grid_size) { Array.new(grid_size) { 0 } }
-    @neighbours = []
     @scanner = CellScanner.new
   end
 
@@ -23,16 +22,14 @@ class Board
   def update_grid(relations)
     @grid.map do |row|
       row.map! do |cell|
-        n = relations.shift
-        if n == 3
-          1
-        elsif n != 2
-          0
-        else
-          cell
-        end
+        cell_assign(cell, relations.shift)
       end
     end
   end
 
+  def cell_assign(cell, neighbours)
+    return 1 if neighbours == 3
+    return 0 if neighbours != 2
+    cell
+  end
 end
