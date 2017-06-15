@@ -1,19 +1,14 @@
 class CellScanner
-
   def record_all_cell_neighbours(grid)
-    @grid = grid
-    results = []
-    @grid.each_with_index do |row, row_index|
-      row.each_with_index do |cell, cell_index|
-        results << all_neighbours(row_index, cell_index).count(1)
-      end
+    @grid = grid.dup
+    grid.flat_map.with_index do |row, row_i|
+      row.map.with_index { |cell, cell_i| scan_area(row_i, cell_i).count(1) }
     end
-    results
   end
 
   private
 
-  def all_neighbours(row, cell)
+  def scan_area(row, cell)
     [
       neighbour(row - 1, cell - 1),
       neighbour(row - 1, cell),

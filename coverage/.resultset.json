@@ -191,16 +191,11 @@
       ],
       "/Users/timrobinson/Desktop/Coding_Projects/Git_Projects/Makers/course/week-10/tech-tests/game-of-life/lib/cell_scanner.rb": [
         1,
-        null,
         1,
         12,
         12,
-        12,
-        87,
-        783,
+        870,
         null,
-        null,
-        12,
         null,
         null,
         1,
@@ -377,6 +372,6 @@
         null
       ]
     },
-    "timestamp": 1497522859
+    "timestamp": 1497526113
   }
 }

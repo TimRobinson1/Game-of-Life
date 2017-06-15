@@ -21,11 +21,11 @@ class Board
 
   def update_grid(live_neighbours_list)
     @grid.map do |row|
-      row.map! { |cell| cell_assign(cell, live_neighbours_list.shift) }
+      row.map! { |cell| update_cell(cell, live_neighbours_list.shift) }
     end
   end
 
-  def cell_assign(cell, live_neighbours)
+  def update_cell(cell, live_neighbours)
     return 1 if live_neighbours == 3
     return 0 if live_neighbours != 2
     cell
