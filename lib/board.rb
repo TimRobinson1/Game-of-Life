@@ -13,23 +13,21 @@ class Board
   end
 
   def update
-    scanned_grid = @scanner.record_all_cell_neighbours(@grid)
-    update_grid(scanned_grid)
+    live_neighbours_list = @scanner.record_all_cell_neighbours(@grid)
+    update_grid(live_neighbours_list)
   end
 
   private
 
-  def update_grid(relations)
+  def update_grid(live_neighbours_list)
     @grid.map do |row|
-      row.map! do |cell|
-        cell_assign(cell, relations.shift)
-      end
+      row.map! { |cell| cell_assign(cell, live_neighbours_list.shift) }
     end
   end
 
-  def cell_assign(cell, neighbours)
-    return 1 if neighbours == 3
-    return 0 if neighbours != 2
+  def cell_assign(cell, live_neighbours)
+    return 1 if live_neighbours == 3
+    return 0 if live_neighbours != 2
     cell
   end
 end
