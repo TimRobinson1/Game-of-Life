@@ -1,0 +1,43 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/grid.css">
+</head>
+
+<table id='table'>
+
+  <% row_num, column_num = 0, 0 %>
+
+  <% @game.grid.each do |row| %>
+    <tr>
+      <% row.each do |block| %>
+        <td onClick='send_id(this.id)' id="<%= row_num %>, <%= column_num %>" class="fill-<%= block %>"> </td>
+        <% column_num += 1 %>
+      <% end %>
+    </tr>
+    <% column_num = 0 %>
+    <% row_num += 1 %>
+  <% end %>
+
+</table>
+
+<form id='grid-choice' class='hidden' method='post' action='/setup/choices'>
+  <input id='x-axis' type="text" name="row">
+  <input id='y-axis' type="text" name="column">
+  <input type="submit" value="Add Square">
+</form>
+
+<form method='get' action='/play'>
+  <input type="submit" value="Click to Start!">
+</form>
+
+<form method='get' action='/'>
+  <input type="submit" value="Start Again">
+</form>
+
+<script>
+function send_id(id) {
+  var coordinates = id.split(', ')
+  document.getElementById('x-axis').value = coordinates[0]
+  document.getElementById('y-axis').value = coordinates[1]
+  document.getElementById('grid-choice').submit()
+}
+</script>

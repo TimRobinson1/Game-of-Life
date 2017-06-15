@@ -1,0 +1,18 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/grid.css">
+  <meta http-equiv="refresh" content="0.5; url=/play" />
+</head>
+
+<table>
+  <% @game.grid.each do |row| %>
+    <tr>
+      <% row.each do |block| %>
+        <td class="fill-<%= block %>"> </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<form method='get' action='/'>
+  <input type="submit" value="Start Again">
+</form>
